@@ -10,7 +10,7 @@
 #########################################################################
 
 
-$dest=$1
+dest=$1
 if [ ! -f downloads_log ];then
         touch downloads_log
 fi
@@ -42,5 +42,4 @@ while read link; do
         fi
 done <links
 rm links
-mv *.mp3 $dest
-
+mv *.mp3 "$dest"
