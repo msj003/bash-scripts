@@ -28,18 +28,22 @@ done <a
 grep -oP "........320.*?mp3" m > links
 rm a
 rm m
+downloads=0
+skipped=0
 while read link; do
         echo $link
         if grep -q "$link" downloads_log;then
                 echo "--------------------------------"
                 echo "Previously downloaded"
                 echo "--------------------------------"
+                skipped=$((skipped+1))
         else
-                wget -nc "$link" 
+                wget -nc "$link" -P "$dest"
+                downloads=$((downloads+1))
                 if [ $? -eq 0 ];then
                         echo $link >> downloads_log
                 fi
         fi
 done <links
+echo "Downloads : $downloads  , Skipped : $skipped"
 rm links
-mv *.mp3 "$dest"
