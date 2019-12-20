@@ -14,14 +14,14 @@ dest=$1
 if [ ! -f downloads_log ];then
         touch downloads_log
 fi
-curl -L https://ww.djpunjab.com/page/top20_month.html >> a
+curl -L https://djpunjab.fm/page/top20_month.html >> a
 grep -oP "single.*?html" a > b
 mv b a
 i=1
 while read a; do
         echo $i 
         echo $a
-        curl -L https://ww.djpunjab.com/$a >> m
+        curl -L https://djpunjab.fm/$a >> m
         i=$((i+1))
 	echo "--------------------------------------------"
 done <a
