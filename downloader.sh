@@ -3,7 +3,7 @@
 #	Manjinder Singh							#
 #	  2018-06-21							#
 #									#
-#	script :	hustler.sh					#
+#	script :	downloader.sh					#
 #	Function : downloads top 100 - monthly songs from djpunjab 	#
 #	 								#
 #	- Parameters : $1 = destination folder				#
