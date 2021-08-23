@@ -14,22 +14,24 @@ dest=$1
 if [ ! -f downloads_log ];then
         touch downloads_log
 fi
-curl -L https://djpunjab.fm/page/top20_month.html >> a
-grep -oP "single.*?html" a > b
-mv b a
+curl -k -L https://djpunjab.fm/page/top20.html >> list_page
+grep -oP "single.*?html" list_page > b
+mv b list_page
 i=1
-while read a; do
-        echo $i 
-        echo $a
-        curl -L https://djpunjab.fm/$a >> m
+while read list_page; do
+        echo $i
+        echo $list_page
+        curl -k -L https://djpunjab.fm/$list_page >> song_page
+        echo $song_page
         i=$((i+1))
 	echo "--------------------------------------------"
-done <a
-grep -oP "........320.*?mp3" m > links
-rm a
-rm m
+done <list_page
+grep -oP "........320.*?mp3" song_page > links
+rm list_page
+rm song_page
 downloads=0
 skipped=0
+echo $links
 while read link; do
         echo $link
         if grep -q "$link" downloads_log;then
