@@ -10,7 +10,7 @@
 #########################################################################
 
 
-dest=$1
+dest=/volume1/music/downloads_djpunjab
 if [ ! -f downloads_log ];then
         touch downloads_log
 fi
